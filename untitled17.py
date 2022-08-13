@@ -170,10 +170,7 @@ if st.button("Run Script"):
      df3.columns = df3.iloc[1]
      df3 = df3.drop([0,1])
      df3 = df3.rename(columns = {'FIPS': 'Abbreviation_list'})
+     df3 = df3.rename(columns = {'Abbreviation': 'BMA_State'})
      df3 = df3.iloc[: , :21]
      df = df.drop(columns = ['Unnamed: 0'])
-     df3_temp = df3.drop(columns = ['Abbreviation_list'])
-     for s in df3_temp.columns:
-          df[s] = np.nan
-     st.write(df3)
-     st.write(df['Abbreviation_list'])
+     df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
