@@ -178,4 +178,4 @@ if st.button("Run Script"):
      st.write(df3)
      for i in range(2):
           st.write(df['Abbreviation_list'].iloc[i])
-          st.write(df3[df3['Abbreviation_list'] == df['Abbreviation_list'].iloc[i]])
+          st.write(df3[df3['Abbreviation_list'] == 2])
