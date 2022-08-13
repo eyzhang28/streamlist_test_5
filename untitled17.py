@@ -170,6 +170,6 @@ if st.button("Run Script"):
      df3.columns = df3.iloc[1]
      df3 = df3.drop([0,1])
      df3 = df3.rename(columns = {'FIPS': 'Abbreviation_list'})
-     df4 = df3[['Abbreviation']]
-     st.write(df3)
+     df4 = df3[['Abbreviation', 'Abbreviation_list']]
+     st.write(df3.columns)
      st.write(df4)
