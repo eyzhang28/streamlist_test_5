@@ -161,19 +161,19 @@ def compare_dict(df6, proofs_dictionary):
 
 if st.button("Run Script"):
      st.write("test")
-     df = pd.read_csv(print_data)
-     df = df.applymap(str)
-     st.write(df['Password'].iloc[0])
-     df2 = pd.read_csv(state_data)
-     df2 = df2.applymap(str)
-     df2 = df2.drop([2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,43,44,45])
-     df2_transposed = df2.T
-     df3 = df2_transposed.reset_index(drop = True)
-     df3.columns = df3.iloc[1]
-     df3 = df3.drop([0,1])
-     df3 = df3.rename(columns = {'Abbreviation': 'BMA_State'})
-     df3 = df3.iloc[: , :21]
-     df = df.drop(columns = ['Unnamed: 0'])
-     df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
-     st.write(df4['UI_Number'])
-     st.write(proofs_data)
+     #df = pd.read_csv(print_data)
+     #df = df.applymap(str)
+     #st.write(df['Password'].iloc[0])
+     #df2 = pd.read_csv(state_data)
+     #df2 = df2.applymap(str)
+     #df2 = df2.drop([2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,43,44,45])
+     #df2_transposed = df2.T
+     #df3 = df2_transposed.reset_index(drop = True)
+     #df3.columns = df3.iloc[1]
+     #df3 = df3.drop([0,1])
+     #df3 = df3.rename(columns = {'Abbreviation': 'BMA_State'})
+     #df3 = df3.iloc[: , :21]
+     #df = df.drop(columns = ['Unnamed: 0'])
+     #df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
+     #st.write(df4['UI_Number'])
+     data = tb.read_pdf(proofs_data, area = (150, 400, 180, 600), pages = 1)
