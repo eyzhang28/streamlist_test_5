@@ -174,3 +174,4 @@ if st.button("Run Script"):
      df3 = df3.iloc[: , :21]
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
+     st.write(df4.columns)
