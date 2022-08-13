@@ -173,6 +173,7 @@ if st.button("Run Script"):
      df3 = df3.iloc[: , :21]
      df = df.drop(columns = ['Unnamed: 0'])
      st.write(df3.columns)
-     for s in df3.columns:
+     df3_temp = df3.drop(columns = ['Abbreviation_list'])
+     for s in df3_temp.columns:
           df[s] = np.nan
      st.write(df.columns)
