@@ -161,8 +161,8 @@ def compare_dict(df6, proofs_dictionary):
 
 if st.button("Run Script"):
      st.write("test")
-     df = pd.read_csv(print_data)
-     st.write(df['Password'].iloc[0])
+     #df = pd.read_csv(print_data)
+     #st.write(df['Password'].iloc[0])
      df2 = pd.read_csv(state_data)
      df2 = df2.drop([2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,43,44,45])
      df2_transposed = df2.T
