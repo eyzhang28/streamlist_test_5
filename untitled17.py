@@ -172,5 +172,5 @@ if st.button("Run Script"):
      df3 = df3.rename(columns = {'FIPS': 'Abbreviation_list'})
      df3 = df3.iloc[: , :21]
      df = df.drop(columns = ['Unnamed: 0'])
-     display(df3.columns)
+     st.write(df3.columns)
      
