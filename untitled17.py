@@ -176,5 +176,5 @@ if st.button("Run Script"):
      for s in df3_temp.columns:
           df[s] = np.nan
      st.write(df3)
-     for i in Range(2):
+     for i in range(2):
           st.write(df3[df3['Abbreviation_list'] == df['Abbreviation_list'].iloc[i]])
