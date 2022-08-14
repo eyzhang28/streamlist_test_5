@@ -228,7 +228,6 @@ def compare_dict(df6, proofs_dictionary):
     
 
 if st.button("Run Script"):
-     st.write("test")
      df = pd.read_csv(print_data)
      df['Web_ID'] = df['Web_ID'].astype('int')
      df = df.applymap(str)
@@ -250,6 +249,7 @@ if st.button("Run Script"):
      df4 = pd.merge(df3, df, on = 'Abbreviation_list', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
      for i in range(1, 3, 2):
+          st.write('Errors with page ' + str(i) + ' of proofs:')
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
                page = pdf.pages[i-1]
@@ -274,24 +274,23 @@ if st.button("Run Script"):
           data = tb.read_pdf(proofs_data, area = (150, 400, 180, 600), pages = i)
           if (notice == 'Second Notice'):
                if (data[0].columns[0] == 'SECOND NOTICE'):
-                    st.write("Correct Notice")
+                    pass
                else:
                     st.write("Incorrect Notice")
           elif (notice == 'Third Notice'):
                if (data[0].columns[0] == 'THIRD NOTICE'):
-                    st.write("Correct Notice")
+                    pass
                else:
                     st.write("Incorrect Notice")
           else:
                if (data == []):
-                    st.write("Correct Notice")
+                    pass
                else:
                     st.write("Incorrect Notice")
           data = tb.read_pdf(proofs_data, area = (23, 52, 144, 333), pages = i)
           if (df6['State Agency Name (50 char)'].iloc[0].lower().strip() == data[0].columns[0].lower().strip()):
                proofs_dictionary['State Agency Name'] = data[0].columns[0]
                if (pd.isnull(df6['Return Address Line 2'].iloc[0]) and pd.isnull(df6['Department Name (50 char)'].iloc[0])):
-                    st.write("test1")
                     proofs_dictionary['Department Name'] = "Empty"
                     proofs_dictionary['Return Address'] = data[0].iloc[0][0]
                     proofs_dictionary['Return Address Line 2'] = "Empty"
@@ -302,7 +301,6 @@ if st.button("Run Script"):
                     proofs_dictionary['Return Address Zip Code'] = zip_codes
                     proofs_dictionary['Phone Number'] = xa_cleaning(data[0].iloc[2][0][7:])
                if (pd.isnull(df6['Return Address Line 2'].iloc[0]) and not pd.isnull(df6['Department Name (50 char)'].iloc[0])):
-                    st.write("test2")
                     proofs_dictionary['Department Name'] = xa_cleaning(data[0].iloc[0][0])
                     proofs_dictionary['Return Address'] = data[0].iloc[1][0]
                     proofs_dictionary['Return Address Line 2'] = "Empty"
@@ -313,7 +311,6 @@ if st.button("Run Script"):
                     proofs_dictionary['Return Address Zip Code'] = zip_codes
                     proofs_dictionary['Phone Number'] = xa_cleaning(data[0].iloc[3][0][7:])
                if (not pd.isnull(df6['Return Address Line 2'].iloc[0]) and pd.isnull(df6['Department Name (50 char)'].iloc[0])):
-                    st.write("test3")
                     proofs_dictionary['Department Name'] = "Empty"
                     proofs_dictionary['Return Address'] = data[0].iloc[0][0]
                     proofs_dictionary['Return Address Line 2'] = data[0].iloc[1][0]
@@ -324,7 +321,6 @@ if st.button("Run Script"):
                     proofs_dictionary['Return Address Zip Code'] = zip_codes
                     proofs_dictionary['Phone Number'] = xa_cleaning(data[0].iloc[3][0][7:])
                if (not pd.isnull(df6['Return Address Line 2'].iloc[0]) and not pd.isnull(df6['Department Name (50 char)'].iloc[0])):
-                    st.write("test4")
                     proofs_dictionary['Department Name'] = xa_cleaning(data[0].iloc[0][0])
                     proofs_dictionary['Return Address'] = data[0].iloc[1][0]
                     proofs_dictionary['Return Address Line 2'] = data[0].iloc[2][0]
@@ -410,7 +406,6 @@ if st.button("Run Script"):
                proofs_dictionary['BA_ZIP_5'] = proofs_dictionary['BA_ZIP']
                proofs_dictionary['BA_ZIP_4'] = 'Empty'
           df6 = df6.fillna('Empty')
-          st.write('Errors with page ' + str(i) + 'of proofs:')
           compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
         
