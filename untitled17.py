@@ -175,10 +175,14 @@ if st.button("Run Script"):
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
-     for i in range(5):
+     #for i in range(len(df4)):
           while len(df4['Web_ID'].iloc[i]) < 12:
                df4['Web_ID'].iloc[i] = '0' + df4['Web_ID'].iloc[i]
-          st.write(len(df4['Web_ID'].iloc[i]))
+     #for i in range(len(df4)):
+          while len(df4['UI_Number'].iloc[i]) < 10:
+               df4['UI_Number'].iloc[i] = '0' + df4['UI_Number'].iloc[i]
+     for i in range(len(df4)):
+          st.write(len(df4['BMA_Area_Code_2'].iloc[i]))
      for i in range(1, 5, 2):
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
@@ -189,7 +193,7 @@ if st.button("Run Script"):
           PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
           st.write(WEB_ID)
           st.write(PSWD)
-          df4 = df4[df4['Web_ID'].notna()]
+          df5
           df5 = df4[df4['Password'] == PSWD]
           st.write(df5)
           
