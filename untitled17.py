@@ -175,7 +175,6 @@ if st.button("Run Script"):
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
-     st.write(df4['BMA_Area_Code_2'])
      for i in range(1, 5, 2):
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
@@ -184,11 +183,11 @@ if st.button("Run Script"):
                output = xa_cleaning(output)
           PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
           df5 = df4[df4['Password'].str.contains(PSWD)]
-          for i in range(len(df5)):
-               while len(df5['UI_Number'].iloc[i]) < 10:
-                    df5['UI_Number'].iloc[i] = '0' + df5['UI_Number'].iloc[i]
-               while len(df5['Web_ID'].iloc[i]) < 12:
-                    df5['Web_ID'].iloc[i] = '0' + df5['Web_ID'].iloc[i]
+          for j in range(len(df5)):
+               while len(df5['UI_Number'].iloc[j]) < 10:
+                    df5['UI_Number'].iloc[j] = '0' + df5['UI_Number'].iloc[j]
+               while len(df5['Web_ID'].iloc[j]) < 12:
+                    df5['Web_ID'].iloc[j] = '0' + df5['Web_ID'].iloc[j]
           WEB_ID = str(output[output.index('WEB ID:') + 8: output.index('WEB ID: ') + 20])
           df6 = df5[df5['Web_ID'].str.contains(WEB_ID)]
           df6['Form Identification'] = 'BLS 3023 - Industry Verification Form'
@@ -210,9 +209,10 @@ if st.button("Run Script"):
                     st.write("Correct Notice")
                else:
                     st.write("Incorrect Notice")
-          st.write(df6)
           data = tb.read_pdf(proofs_data, area = (23, 52, 144, 333), pages = i)
-          st.write(data)
+          st.write(output)
+          st.write(i)
+          """
           if (df6['State Agency Name (50 char)'].iloc[0].lower().strip() == data[0].columns[0].lower().strip()):
                proofs_dictionary['State Agency Name'] = data[0].columns[0]
                if (pd.isnull(df6['Return Address Line 2'].iloc[0]) and pd.isnull(df6['Department Name (50 char)'].iloc[0])):
@@ -335,3 +335,4 @@ if st.button("Run Script"):
           st.write(proofs_dictionary)
           #compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
+          """
