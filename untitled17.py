@@ -164,6 +164,7 @@ if st.button("Run Script"):
      df = pd.read_csv(print_data)
      df['Web_ID'] = df['Web_ID'].astype('int')
      df = df.applymap(str)
+     st.write(df2)
      for i in range(len(df)):
           if len(df['Abbreviation_list'].iloc[i]) == 1:
                df['Abbreviation_list'].iloc[i] = '0' + df['Abbreviation_list'].iloc[i]
