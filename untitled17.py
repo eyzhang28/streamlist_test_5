@@ -210,4 +210,5 @@ if st.button("Run Script"):
                     st.write("Correct Notice")
                else:
                     st.write("Incorrect Notice")
+          st.write(df6)
           
