@@ -23,6 +23,7 @@ print_data = st.file_uploader("Upload Print Files", type=["csv"])
 total_lines = []
 
 def displayPDF(file):
+    file = base64.b64encode(file).decode('utf-8')
     pdf_display = f'<iframe src="data:application/pdf;base64,{file}" width="800" height="800" type="application/pdf"></iframe>'
 
     # Displaying File
