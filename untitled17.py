@@ -254,6 +254,7 @@ if st.button("Run Script"):
                if (not pd.isnull(df6['Return Address Line 2'].iloc[0]) and not pd.isnull(df6['Department Name (50 char)'].iloc[0])):
                     st.write("test4")
                     proofs_dictionary['Department Name'] = xa_cleaning(data[0].iloc[0][0])
+                    proofs_dictionary['Return Address'] = data[0].iloc[1][0]
                     proofs_dictionary['Return Address Line 2'] = data[0].iloc[2][0]
                     proofs_dictionary['City'] = data[0].iloc[3][0][0:data[0].iloc[3][0].index(',')]
                     proofs_dictionary['Abbreviation'] = data[0].iloc[3][0][data[0].iloc[3][0].index(',') + 2:data[0].iloc[3][0].index(',') + 4]
