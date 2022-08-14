@@ -176,7 +176,6 @@ if st.button("Run Script"):
      df4 = pd.merge(df3, df, on = 'Abbreviation_list', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
      st.write(df4.iloc[0])
-     """
      for i in range(1, 3, 2):
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
@@ -336,5 +335,4 @@ if st.button("Run Script"):
           st.write(proofs_dictionary)
           compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
-          """
          
