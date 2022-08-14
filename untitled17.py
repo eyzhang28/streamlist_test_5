@@ -162,7 +162,10 @@ def compare_dict(df6, proofs_dictionary):
 if st.button("Run Script"):
      st.write("test")
      df = pd.read_csv(print_data)
+     df['Web_ID'] = df['Web_ID'].applymap(int)
      df = df.applymap(str)
+     st.write(df['Web_ID'])
+     """
      for i in range(len(df)):
           if (len(df['Abbreviation_list'].iloc[i]) == 1):     
                df['Abbreviation_list'].iloc[i] = '0' + df['Abbreviation_list'].iloc[i]
@@ -342,4 +345,4 @@ if st.button("Run Script"):
           st.write(proofs_dictionary)
           compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
-         
+          """
