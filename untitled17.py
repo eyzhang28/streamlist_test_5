@@ -334,4 +334,5 @@ if st.button("Run Script"):
           st.write(proofs_dictionary)
           compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
+          """
          
