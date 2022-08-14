@@ -91,10 +91,14 @@ def compare_dict(df6, proofs_dictionary):
         st.write('Same ZIP 5')
     else:
         st.write('Different ZIP 5')
+        st.write(proofs_dictionary['BA_ZIP_5'])
+        st.write(df6['BMA_Area_Code_1'].iloc[0])
     if (df6['BMA_Area_Code_2'].iloc[0] == proofs_dictionary['BA_ZIP_4']):
         st.write('Same ZIP 4')
     else:
         st.write('Different ZIP 4')
+        st.write(proofs_dictionary['BA_ZIP_4'])
+        st.write(df6['BMA_Area_Code_2'].iloc[0])
     if (df6['State Agency Name'].iloc[0] == proofs_dictionary['the State Agency Name 1']):
         st.write('Same the State Agency Name 1')
     else:
