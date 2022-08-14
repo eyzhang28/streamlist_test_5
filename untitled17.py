@@ -43,18 +43,21 @@ def xa_cleaning(s):
         pass
     return s
 def compare_dict(df6, proofs_dictionary):
+    counter = 0
     if (proofs_dictionary['Form Identification'] == 'BLS 3023 - Industry Verification Form'):
         pass
     else:
         st.write('Wrong Identification')
         st.write("Proof's Form Identification = " + proofs_dictionary['Form Identification'])
         st.write("Correct Form Identification = BLS 3023 - Industry Verification Form")
+        counter = 1
     if (proofs_dictionary['OMB Clearance Information'] == 'O.M.B. No. 1220-0032'):
         pass
     else:
         st.write('Wrong OMB info')
         st.write("Proof's OMB Clearance Information = " + proofs_dictionary['OMB Clearance Information'])
         st.write("Correct Form Identification = O.M.B. No. 1220-0032")
+        counter = 1
     if (string_cleaning(df6['State Agency Name (50 char)'].iloc[0]) == string_cleaning(proofs_dictionary['State Agency Name'])):
         pass
         if (df6['Abbreviation'].iloc[0] == proofs_dictionary['Abbreviation']):
@@ -67,30 +70,35 @@ def compare_dict(df6, proofs_dictionary):
             st.write('Different Department Name')
             st.write("Proof's Department Name = " + proofs_dictionary['Department Name'])
             st.write("Print File's Department Name = " + df6['Department Name (50 char)'].iloc[0])
+            counter = 1
         if (string_cleaning(df6['Return Address'].iloc[0]) == string_cleaning(proofs_dictionary['Return Address'])):
             pass
         else:
             st.write('Different Return Address')
             st.write("Proof's Return Address = " + proofs_dictionary['Return Address'])
             st.write("Print File's Return Address = " + df6['Return Address'].iloc[0])
+            counter = 1
         if (string_cleaning(df6['Return Address Line 2'].iloc[0]) == xa_cleaning(string_cleaning(proofs_dictionary['Return Address Line 2']))):
             pass
         else:
             st.write('Different Return Address 2')
             st.write("Proof's Return Address Line 2 = " + proofs_dictionary['Return Address Line 2'])
             st.write("Print File's Return Address Line 2 = " + df6['Return Address Line 2'].iloc[0])
+            counter = 1
         if (df6['Return Address Zip Code'].iloc[0] == proofs_dictionary['Return Address Zip Code']):
             pass
         else:
             st.write('Different Return Zip Code')
             st.write("Proof's Return Zip Code = " + proofs_dictionary['Return Address Zip Code'])
             st.write("Print File's Return Zip Code = " + df6['Return Address Zip Code'].iloc[0])
+            counter = 1
         if (df6['Phone Number'].iloc[0] == proofs_dictionary['Phone Number']):
             pass
         else:
             st.write('Different Phone Number')
             st.write("Proof's Phone Number = " + proofs_dictionary['Phone Number'])
             st.write("Print File's Phone Number = " + df6['Phone Number'].iloc[0])
+            counter = 1
         if (df6['Print (Y/N)'].iloc[0] == proofs_dictionary['Print Email']):
             if (df6['Print (Y/N)'].iloc[0] == 'N'):
                 pass
@@ -101,48 +109,57 @@ def compare_dict(df6, proofs_dictionary):
                     st.write('Different Email')
                     st.write("Proof's Email = " + proofs_dictionary['Email'])
                     st.write("Print File's Email = " + df6['Email Address to be printed on ARS Letters'].iloc[0])
+                    counter = 1
     else:
         st.write('Different State Agency Name')
         st.write("Proof's State Agency Name = " + proofs_dictionary['State Agency Name'])
         st.write("Print File's State Agency Name = " + df6['State Agency Name (50 char)'].iloc[0])
+        counter = 1
     if (df6['BMA_Area_Code_1'].iloc[0] == proofs_dictionary['BA_ZIP_5']):
         pass
     else:
         st.write('Different ZIP 5')
         st.write("Proof's ZIP 5 = " + proofs_dictionary['BA_ZIP_5'])
         st.write("Print File's ZIP 5 = " + df6['BMA_Area_Code_1'].iloc[0])
+        counter = 1
     if (df6['BMA_Area_Code_2'].iloc[0] == proofs_dictionary['BA_ZIP_4']):
         pass
     else:
         st.write('Different ZIP 4')
         st.write("Proof's ZIP 4 = " + proofs_dictionary['BA_ZIP_4'])
         st.write("Print File's ZIP 4 = " + df6['BMA_Area_Code_2'].iloc[0])
+        counter = 1
     if (df6['State Agency Name'].iloc[0] == proofs_dictionary['the State Agency Name 1']):
         pass
     else:
         st.write('Different the State Agency Name 1')
+        counter = 1
     if (df6['State Agency Name'].iloc[0] == proofs_dictionary['the State Agency Name 2']):
         pass
     else:
         st.write('Different the State Agency Name 2')
+        counter = 1
     if (string_stripping(df6['BMA_City'].iloc[0]) == proofs_dictionary['BA_City']):
         pass
     else:
         st.write('Different BMA City')
         st.write("Proof's BMA City = " + proofs_dictionary['BA_City'])
         st.write("Print File's BMA City = " + df6['BMA_City'].iloc[0])
+        counter = 1
     if (string_stripping(df6['BMA_State'].iloc[0]) == proofs_dictionary['BA_State']):
         pass
     else:
         st.write('Different BMA State')
         st.write("Proof's BMA State = " + proofs_dictionary['BA_State'])
         st.write("Print File's BMA State = " + df6['BMA_State'].iloc[0])
+        counter = 1
     if (df6['Mandatory (Y or N only)'].iloc[0] == proofs_dictionary['Is_Mandatory']):
-        st.write('Same Mandatory Status')
+        pass
     else:
         st.write('Different Mandatory Status')
         st.write("Proof's Mandatory Status = " + proofs_dictionary['Is_Mandatory'])
         st.write("Print File's Mandatory Status = " + df6['Mandatory (Y or N only)'].iloc[0])
+        counter = 1
     if (df6['Mandatory (Y or N only)'].iloc[0] == 'Y'):
         if (df6['State Law (Mandatory Only)'].iloc[0] == xa_cleaning(proofs_dictionary['State_Law'])):
             pass
@@ -150,18 +167,21 @@ def compare_dict(df6, proofs_dictionary):
             st.write('Different State Law')
             st.write("Proof's State Law = " + proofs_dictionary['State_Law'])
             st.write("Print File's State Law = " + df6['State Law (Mandatory Only)'].iloc[0])
+            counter = 1
     if (df6['Print Spanish Instructions link?'].iloc[0] == proofs_dictionary['spanish_link']):
         pass
     else:
         st.write('Different Spanish Link')
         st.write("Proof's Spanish Link = " + proofs_dictionary['spanish_link'])
         st.write("Print File's Spanish Link = " + df6['Print Spanish Instructions link?'].iloc[0])
+        counter = 1
     if (string_stripping(df6['Mail_Address_1'].iloc[0]) == proofs_dictionary['BA_Address_1']):
         pass
     else:
         st.write('Different Mail Address 1')
         st.write("Proof's Mail Address 1 = " + proofs_dictionary['BA_Address_1'])
         st.write("Print File's Mail Address 1 = " + df6['Mail_Address_1'].iloc[0])
+        counter = 1
     if (string_stripping(df6['Mail_Address_2'].iloc[0]) == ''):
         df6['Mail_Address_2'].iloc[0] = 'Empty'
     if (string_stripping(df6['Mail_Address_2'].iloc[0]) == proofs_dictionary['BA_Address_2']):
@@ -173,6 +193,7 @@ def compare_dict(df6, proofs_dictionary):
             st.write('Different Mail Address 2')
             st.write("Proof's Mail Address 2 = " + proofs_dictionary['BA_Address_2'])
             st.write("Print File's Mail Address 2 = " + df6['Trade_Name'].iloc[0])
+            counter = 1
     if (string_stripping(df6['Legal_Name'].iloc[0]) == ''):
         df6['Legal_Name'].iloc[0] = 'Empty'
     if (string_stripping(df6['Legal_Name'].iloc[0]) == proofs_dictionary['Legal_Name']):
@@ -184,6 +205,7 @@ def compare_dict(df6, proofs_dictionary):
             st.write('Different Legal Name')
             st.write("Proof's Legal Name = " + proofs_dictionary['Legal_Name'])
             st.write("Print File's Legal Name = " + df6['Trade_Name'].iloc[0])
+            counter = 1
     if (string_stripping(df6['Trade_Name'].iloc[0]) == ''):
         df6['Trade_Name'].iloc[0] = 'Empty'
     if (string_stripping(df6['Trade_Name'].iloc[0]) == proofs_dictionary['Trade_Name']):
@@ -198,6 +220,12 @@ def compare_dict(df6, proofs_dictionary):
                 st.write('Different Trade Name')
                 st.write("Proof's Trade Name = " + proofs_dictionary['Trade_Name'])
                 st.write("Print File's Trade Name = " + df6['Mail_Address_2'].iloc[0])
+                counter = 1
+    if counter == 1:
+        pass
+    else:
+        st.write("None")
+    
 
 if st.button("Run Script"):
      st.write("test")
@@ -382,9 +410,7 @@ if st.button("Run Script"):
                proofs_dictionary['BA_ZIP_5'] = proofs_dictionary['BA_ZIP']
                proofs_dictionary['BA_ZIP_4'] = 'Empty'
           df6 = df6.fillna('Empty')
-          st.write(i)
-          st.write(df6)
-          st.write(proofs_dictionary)
+          st.write('Errors with page ' + i + 'of proofs:')
           compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
         
