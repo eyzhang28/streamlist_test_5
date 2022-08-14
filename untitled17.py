@@ -265,7 +265,7 @@ if st.button("Run Script"):
           else:
                proofs_dictionary['State Agency Name'] = 'Empty'
 
-          mandatory_data = tb.read_pdf(file, area = (130, 420, 150, 590), pages = i)
+          mandatory_data = tb.read_pdf(proofs_data, area = (130, 420, 150, 590), pages = i)
           if (mandatory_data == []):
                proofs_dictionary['Is_Mandatory'] = 'N'
                proofs_dictionary['State_Law'] = 'Empty'
@@ -275,7 +275,7 @@ if st.button("Run Script"):
 
           proofs_dictionary['U.I.'] = output[output.index('U.I. Number:') + 12: output.index('U.I. Number:') + 23]
 
-          new_data = tb.read_pdf(file, area = (115, 80, 250, 400), pages = i)
+          new_data = tb.read_pdf(proofs_data, area = (115, 80, 250, 400), pages = i)
           test_df = new_data[0]
           if (len(test_df) == 6):
                proofs_dictionary['Legal_Name'] = xa_cleaning(test_df.iat[0,0])
