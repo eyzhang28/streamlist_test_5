@@ -180,10 +180,10 @@ if st.button("Run Script"):
                page = pdf.pages[i-1]
                output = page.extract_text()
                output = xa_cleaning(output)
-           WEB_ID = output[output.index('WEB ID:') + 8: output.index('WEB ID: ') + 20]
-           PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
-           df4 = df4[df4['Web_ID'].notna()]
-           df5 = df4[df4['Web_ID'].str.contains(WEB_ID)]
-           df6 = df5[df5['Password'].str.contains(PSWD)]
+          WEB_ID = output[output.index('WEB ID:') + 8: output.index('WEB ID: ') + 20]
+          PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
+          df4 = df4[df4['Web_ID'].notna()]
+          df5 = df4[df4['Web_ID'].str.contains(WEB_ID)]
+          df6 = df5[df5['Password'].str.contains(PSWD)]
           st.write(df6)
           
