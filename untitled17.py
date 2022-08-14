@@ -5,9 +5,7 @@ import tabula as tb
 import glob, os
 import pdfplumber
 
-st.title('Test')
-
-DATE_COLUMN = 'date/time'
+st.title('ARS Autovalidation')
 
 notice = st.selectbox(
      'What notice is this file?',
@@ -21,13 +19,6 @@ print_data = st.file_uploader("Upload Print Files", type=["csv"])
 
 
 total_lines = []
-
-def displayPDF(file):
-    file = base64.b64encode(file).decode('utf-8')
-    pdf_display = f'<iframe src="data:application/pdf;base64,{file}" width="800" height="800" type="application/pdf"></iframe>'
-
-    # Displaying File
-    st.markdown(pdf_display, unsafe_allow_html=True)
      
 def string_cleaning(s):
     try:
@@ -237,7 +228,6 @@ def compare_dict(df6, proofs_dictionary):
     
 
 if st.button("Run Script"):
-     displayPDF(proofs_data)
      df = pd.read_csv(print_data)
      df['Web_ID'] = df['Web_ID'].astype('int')
      df = df.applymap(str)
