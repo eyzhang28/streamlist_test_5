@@ -164,7 +164,6 @@ if st.button("Run Script"):
      df = pd.read_csv(print_data)
      df['Web_ID'] = df['Web_ID'].astype('int')
      df = df.applymap(str)
-     st.write(df['Abbreviation_list'])
      df2 = pd.read_csv(state_data)
      df2 = df2.applymap(str)
      df2 = df2.drop([2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,43,44,45])
@@ -179,12 +178,9 @@ if st.button("Run Script"):
           s = df3['Abbreviation_list'].iloc[i]
           if s[0] == '0':
                df3['Abbreviation_list'].iloc[i] = s[1]
-     st.write(df3)
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'Abbreviation_list', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
-     st.write(len(df4))
-     st.write(df4.iloc[0])
      for i in range(1, 3, 2):
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
