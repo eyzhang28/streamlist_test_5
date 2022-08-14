@@ -175,6 +175,7 @@ if st.button("Run Script"):
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'Abbreviation_list', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
+     st.write(df4.iloc[0])
      """
      for i in range(1, 3, 2):
           proofs_dictionary = {}
