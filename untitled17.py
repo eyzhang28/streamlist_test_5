@@ -184,5 +184,6 @@ if st.button("Run Script"):
           PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
           st.write(WEB_ID)
           st.write(PSWD)
+          df4 = df4[df4['Web_ID'].notna()]
 
           
