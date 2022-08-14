@@ -174,6 +174,11 @@ if st.button("Run Script"):
      df3 = df3.drop([0,1])
      df3 = df3.rename(columns = {'FIPS': 'Abbreviation_list'})
      df3 = df3.iloc[: , :21]
+     df3 = df3.iloc[:-2]
+     for i in range(len(df3)):
+          s = df3['Abbreviation_list'].iloc[i]
+          if s[0] == '0':
+               df3['Abbreviation_list'].iloc[i] = s[1]
      st.write(df3)
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'Abbreviation_list', how = 'outer')
