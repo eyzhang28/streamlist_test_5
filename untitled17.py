@@ -175,7 +175,10 @@ if st.button("Run Script"):
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
-                  
+     for i in range(5):
+          while df4['Web_ID'].iloc[i] < 12:
+               df4['Web_ID'].iloc[i] = '0' + df4['Web_ID'].iloc[i]
+          st.write(len(df4['Web_ID'].iloc[i]))
      for i in range(1, 5, 2):
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
