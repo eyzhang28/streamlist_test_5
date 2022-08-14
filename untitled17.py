@@ -185,6 +185,6 @@ if st.button("Run Script"):
           st.write(WEB_ID)
           st.write(PSWD)
           df4 = df4[df4['Web_ID'].notna()]
-          df5 = df4[df4['Web_ID'].str.contains(WEB_ID)]
+          df5 = df4[df4['Web_ID'].contains(str(WEB_ID))]
           st.write(df5)
           
