@@ -164,6 +164,10 @@ if st.button("Run Script"):
      df = pd.read_csv(print_data)
      df['Web_ID'] = df['Web_ID'].astype('int')
      df = df.applymap(str)
+     for i in range(len(df)):
+          if len(df['Abbreviation_list'].iloc[i]) == 1:
+               df['Abbreviation_list'].iloc[i] = '0' + df['Abbreviation_list'].iloc[i]
+     st.write(df['Abbreviation_list'])
      df2 = pd.read_csv(state_data)
      df2 = df2.applymap(str)
      df2 = df2.drop([2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,43,44,45])
@@ -172,9 +176,6 @@ if st.button("Run Script"):
      df3.columns = df3.iloc[1]
      df3 = df3.drop([0,1])
      df3 = df3.rename(columns = {'FIPS': 'Abbreviation_list'})
-     df3['Abbreviation_list'] = df3['Abbreviation_list'].astype('int')
-     df3 = df3.applymap(str)
-     st.write(df3['Abbreviation_list'])
      df3 = df3.iloc[: , :21]
      st.write(df3)
      df = df.drop(columns = ['Unnamed: 0'])
