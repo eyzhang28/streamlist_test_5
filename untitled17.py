@@ -177,3 +177,4 @@ if st.button("Run Script"):
      #df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
      #st.write(df4['UI_Number'])
      data = tb.read_pdf(proofs_data, area = (150, 400, 180, 600), pages = 1)
+     st.write(data)
