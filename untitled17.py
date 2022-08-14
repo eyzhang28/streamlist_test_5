@@ -236,6 +236,7 @@ def compare_dict(df6, proofs_dictionary):
     
 
 if st.button("Run Script"):
+     displayPDF(proofs_data)
      df = pd.read_csv(print_data)
      df['Web_ID'] = df['Web_ID'].astype('int')
      df = df.applymap(str)
