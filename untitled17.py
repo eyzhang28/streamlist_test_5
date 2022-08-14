@@ -189,7 +189,6 @@ if st.button("Run Script"):
                output = xa_cleaning(output)
           PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
           df5 = df4[df4['Password'].str.contains(PSWD)]
-          st.write(df5)
           for j in range(len(df5)):
                while len(df5['UI_Number'].iloc[j]) < 10:
                     df5['UI_Number'].iloc[j] = '0' + df5['UI_Number'].iloc[j]
@@ -217,9 +216,6 @@ if st.button("Run Script"):
                else:
                     st.write("Incorrect Notice")
           data = tb.read_pdf(proofs_data, area = (23, 52, 144, 333), pages = i)
-          st.write(data)
-          st.write(data[0].columns[0])
-          st.write(df6)
           if (df6['State Agency Name (50 char)'].iloc[0].lower().strip() == data[0].columns[0].lower().strip()):
                proofs_dictionary['State Agency Name'] = data[0].columns[0]
                if (pd.isnull(df6['Return Address Line 2'].iloc[0]) and pd.isnull(df6['Department Name (50 char)'].iloc[0])):
