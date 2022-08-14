@@ -211,4 +211,5 @@ if st.button("Run Script"):
                else:
                     st.write("Incorrect Notice")
           st.write(df6)
-          
+          data = tb.read_pdf(proofs_data, area = (23, 52, 144, 333), pages = i)
+          st.write(data)
