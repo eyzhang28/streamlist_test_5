@@ -127,7 +127,10 @@ def compare_dict(df6, proofs_dictionary):
     else:
         st.write('Different ZIP 4')
         st.write("Proof's ZIP 4 = " + proofs_dictionary['BA_ZIP_4'])
-        st.write("Print File's ZIP 4 = " + df6['BMA_Area_Code_2'].iloc[0])
+        if (df6['BMA_Area_Code_2'].iloc[0] == np.nan or df6['BMA_Area_Code_2'].iloc[0] == ""):
+            st.write("Print File's ZIP 4 = None")
+        else:
+            st.write("Print File's ZIP 4 = " + df6['BMA_Area_Code_2'].iloc[0])
         counter = 1
     if (df6['State Agency Name'].iloc[0] == proofs_dictionary['the State Agency Name 1']):
         pass
@@ -288,7 +291,6 @@ if st.button("Run Script"):
                else:
                     st.write("Incorrect Notice")
           data = tb.read_pdf(proofs_data, area = (23, 52, 144, 333), pages = i)
-          st.write(df6)
           if (df6['Return Address Line 2'].iloc[0] == 'nan'):
                df6['Return Address Line 2'].iloc[0] = np.nan
           if (df6['Department Name (50 char)'].iloc[0] == 'nan'):
@@ -326,7 +328,6 @@ if st.button("Run Script"):
                     proofs_dictionary['Return Address Zip Code'] = zip_codes
                     proofs_dictionary['Phone Number'] = xa_cleaning(data[0].iloc[3][0][7:])
                if (not pd.isnull(df6['Return Address Line 2'].iloc[0]) and not pd.isnull(df6['Department Name (50 char)'].iloc[0])):
-                    st.write(data[0])
                     proofs_dictionary['Department Name'] = xa_cleaning(data[0].iloc[0][0])
                     proofs_dictionary['Return Address'] = data[0].iloc[1][0]
                     proofs_dictionary['Return Address Line 2'] = data[0].iloc[2][0]
