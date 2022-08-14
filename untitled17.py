@@ -185,6 +185,7 @@ if st.button("Run Script"):
                output = xa_cleaning(output)
           PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
           df5 = df4[df4['Password'].str.contains(PSWD)]
+          st.write(df5)
           for j in range(len(df5)):
                while len(df5['UI_Number'].iloc[j]) < 10:
                     df5['UI_Number'].iloc[j] = '0' + df5['UI_Number'].iloc[j]
