@@ -410,7 +410,7 @@ if st.button("Run Script"):
                proofs_dictionary['BA_ZIP_5'] = proofs_dictionary['BA_ZIP']
                proofs_dictionary['BA_ZIP_4'] = 'Empty'
           df6 = df6.fillna('Empty')
-          st.write('Errors with page ' + i + 'of proofs:')
+          st.write('Errors with page ' + str(i) + 'of proofs:')
           compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
         
