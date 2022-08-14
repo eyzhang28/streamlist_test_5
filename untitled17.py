@@ -176,9 +176,7 @@ if st.button("Run Script"):
      df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
      for i in range(len(df4)):
-          while (len(df4['Web_ID'].iloc[i]) < 12):
-                 df4['Web_ID'].iloc[i] = '0' + df4['Web_ID'].iloc[i]
-     st.write(df4['Web_ID'])
+          st.write(len(df4['Web_ID'].iloc[i]))
                   
      for i in range(1, 5, 2):
           proofs_dictionary = {}
