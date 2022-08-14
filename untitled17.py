@@ -181,8 +181,7 @@ if st.button("Run Script"):
      #for i in range(len(df4)):
           #while len(df4['UI_Number'].iloc[i]) < 10:
                #df4['UI_Number'].iloc[i] = '0' + df4['UI_Number'].iloc[i]
-     for i in range(len(df4)):
-          st.write(len(df4['BMA_Area_Code_2'].iloc[i]))
+     st.write(df4['BMA_Area_Code_2'])
      for i in range(1, 5, 2):
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
