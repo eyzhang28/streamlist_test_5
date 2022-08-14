@@ -21,6 +21,13 @@ print_data = st.file_uploader("Upload Print Files", type=["csv"])
 
 
 total_lines = []
+
+def displayPDF(file):
+    pdf_display = F'<embed src="data:application/pdf;base64,{file}" width="700" height="1000" type="application/pdf">'
+
+    # Displaying File
+    st.markdown(pdf_display, unsafe_allow_html=True)
+     
 def string_cleaning(s):
     try:
         s = s.replace(" ", "")
