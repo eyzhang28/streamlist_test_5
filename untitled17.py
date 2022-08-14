@@ -175,10 +175,6 @@ if st.button("Run Script"):
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'BMA_State', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
-     for i in range(len(df4)):
-          while len(df4['UI_Number'].iloc[i]) < 10:
-               df4['UI_Number'].iloc[i] = '0' + df4['UI_Number'].iloc[i]
-          st.write(i)
      st.write(df4['BMA_Area_Code_2'])
      for i in range(1, 5, 2):
           proofs_dictionary = {}
@@ -186,10 +182,15 @@ if st.button("Run Script"):
                page = pdf.pages[i-1]
                output = page.extract_text()
                output = xa_cleaning(output)
-          WEB_ID = str(output[output.index('WEB ID:') + 8: output.index('WEB ID: ') + 20])
           PSWD = output[output.index('PASSWORD:') + 10: output.index('PASSWORD:') + 18]
-          df5 = df4[df4['Web_ID'].str.contains(WEB_ID)]
-          df6 = df5[df5['Password'].str.contains(PSWD)]
+          df5 = df4[df4['Password'].str.contains(PSWD)]
+          for i in range(len(df5)):
+               while len(df5['UI_Number'].iloc[i]) < 10:
+                    df5['UI_Number'].iloc[i] = '0' + df5['UI_Number'].iloc[i]
+               while len(df5['Web_ID'].iloc[i]) < 12:
+                    df5['Web_ID'].iloc[i] = '0' + df5['Web_ID'].iloc[i]
+          WEB_ID = str(output[output.index('WEB ID:') + 8: output.index('WEB ID: ') + 20])
+          df6 = df5[df5['Web_ID'].str.contains(WEB_ID)]
           df6['Form Identification'] = 'BLS 3023 - Industry Verification Form'
           df6['OMB_Clearance_Information'] = 'O.M.B. No. 1220-0032'
           df6 = df6.reset_index(drop = True)
