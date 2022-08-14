@@ -162,7 +162,7 @@ def compare_dict(df6, proofs_dictionary):
 if st.button("Run Script"):
      st.write("test")
      df = pd.read_csv(print_data)
-     df['Web_ID'] = df['Web_ID'].applymap(int)
+     df['Web_ID'] = df['Web_ID'].astype('int')
      df = df.applymap(str)
      st.write(df['Web_ID'])
      """
