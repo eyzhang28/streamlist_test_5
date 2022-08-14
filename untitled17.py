@@ -210,9 +210,6 @@ if st.button("Run Script"):
                else:
                     st.write("Incorrect Notice")
           data = tb.read_pdf(proofs_data, area = (23, 52, 144, 333), pages = i)
-          st.write(output)
-          st.write(i)
-          """
           if (df6['State Agency Name (50 char)'].iloc[0].lower().strip() == data[0].columns[0].lower().strip()):
                proofs_dictionary['State Agency Name'] = data[0].columns[0]
                if (pd.isnull(df6['Return Address Line 2'].iloc[0]) and pd.isnull(df6['Department Name (50 char)'].iloc[0])):
@@ -335,4 +332,4 @@ if st.button("Run Script"):
           st.write(proofs_dictionary)
           #compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
-          """
+         
