@@ -331,5 +331,7 @@ if st.button("Run Script"):
                proofs_dictionary['BA_ZIP_4'] = 'Empty'
           df6 = df6.fillna('Empty')
           st.write(i)
-          compare_dict(df6, proofs_dictionary)
+          st.write(df6)
+          st.write(proofs_dictionary)
+          #compare_dict(df6, proofs_dictionary)
           st.write('_____________________________')
