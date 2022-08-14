@@ -127,10 +127,7 @@ def compare_dict(df6, proofs_dictionary):
     else:
         st.write('Different ZIP 4')
         st.write("Proof's ZIP 4 = " + proofs_dictionary['BA_ZIP_4'])
-        if (df6['BMA_Area_Code_2'].iloc[0] == np.nan or df6['BMA_Area_Code_2'].iloc[0] == ""):
-            st.write("Print File's ZIP 4 = None")
-        else:
-            st.write("Print File's ZIP 4 = " + df6['BMA_Area_Code_2'].iloc[0])
+        st.write("Print File's ZIP 4 = " + df6['BMA_Area_Code_2'].iloc[0])
         counter = 1
     if (df6['State Agency Name'].iloc[0] == proofs_dictionary['the State Agency Name 1']):
         pass
