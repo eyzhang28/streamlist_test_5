@@ -23,7 +23,7 @@ print_data = st.file_uploader("Upload Print Files", type=["csv"])
 total_lines = []
 
 def displayPDF(file):
-    pdf_display = F'<embed src="data:application/pdf;base64,{file}" width="700" height="1000" type="application/pdf">'
+    pdf_display = f'<iframe src="data:application/pdf;base64,{file}" width="800" height="800" type="application/pdf"></iframe>'
 
     # Displaying File
     st.markdown(pdf_display, unsafe_allow_html=True)
