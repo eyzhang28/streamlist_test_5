@@ -248,7 +248,7 @@ if st.button("Run Script"):
      df = df.drop(columns = ['Unnamed: 0'])
      df4 = pd.merge(df3, df, on = 'Abbreviation_list', how = 'outer')
      df4 = df4[df4['Web_ID'].notna()]
-     for i in range(1, 51, 2):
+     for i in range(9, 51, 2):
           st.write('Errors with page ' + str(i) + ' of proofs:')
           proofs_dictionary = {}
           with pdfplumber.open(proofs_data) as pdf:
@@ -321,6 +321,7 @@ if st.button("Run Script"):
                     proofs_dictionary['Return Address Zip Code'] = zip_codes
                     proofs_dictionary['Phone Number'] = xa_cleaning(data[0].iloc[3][0][7:])
                if (not pd.isnull(df6['Return Address Line 2'].iloc[0]) and not pd.isnull(df6['Department Name (50 char)'].iloc[0])):
+                    st.write(data[0].iloc[3][0])
                     proofs_dictionary['Department Name'] = xa_cleaning(data[0].iloc[0][0])
                     proofs_dictionary['Return Address'] = data[0].iloc[1][0]
                     proofs_dictionary['Return Address Line 2'] = data[0].iloc[2][0]
