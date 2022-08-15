@@ -11,14 +11,12 @@ notice = st.selectbox(
      'What notice is this file?',
      ('First Notice', 'Second Notice', 'Final Notice'))
 
-st.write('Please upload the proofs in the first uploader and the State Contact Shet in the second uploader')
+st.write('Please upload the Proofs in the first uploader, the State Contact Sheet in the second uploader, and the Print Files in the third uploader.')
 
 proofs_data = st.file_uploader("Upload Proofs PDF", type=["pdf"])
 state_data = st.file_uploader("Upload the State Contact Info Sheet", type = ["csv"])
 print_data = st.file_uploader("Upload Print Files", type=["csv"])
 
-
-total_lines = []
      
 def string_cleaning(s):
     try:
