@@ -17,6 +17,11 @@ proofs_data = st.file_uploader("Upload Proofs PDF", type=["pdf"])
 state_data = st.file_uploader("Upload the State Contact Info Sheet", type = ["csv"])
 print_data = st.file_uploader("Upload Print Files", type=["csv"])
 
+st.write("What pages of the proofs do you want to validate?")
+
+a = st.number_input("First Page")
+b = st.number_input("Last Page")
+
      
 def string_cleaning(s):
     try:
