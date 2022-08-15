@@ -19,8 +19,8 @@ print_data = st.file_uploader("Upload Print Files", type=["csv"])
 
 st.write("What pages of the proofs do you want to validate?")
 
-a = st.number_input("First Page")
-b = st.number_input("Last Page")
+a = st.number_input("First Page", min_value = 1, value = 1, step = 2)
+b = st.number_input("Last Page", min_value = 1, value = 1, step = 2)
 
      
 def string_cleaning(s):
